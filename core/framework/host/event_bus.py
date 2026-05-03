@@ -235,11 +235,14 @@ class EventBus:
     - Event history for debugging
 
     Example:
+        import logging
+        logger = logging.getLogger(__name__)
+
         bus = EventBus()
 
         # Subscribe to execution events
         async def on_execution_complete(event: AgentEvent):
-            print(f"Execution {event.execution_id} completed")
+            logger.info(f"Execution {event.execution_id} completed")
 
         bus.subscribe(
             event_types=[EventType.EXECUTION_COMPLETED],
